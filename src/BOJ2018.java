@@ -8,16 +8,20 @@ public class BOJ2018 {
         final int N = Integer.parseInt(br.readLine());
 
         int answer = 0;
-        for (int i = 1; i <= N; i++) {
-            int sum = 0;
-            for (int j = i; j <= N; j++) {
-                sum += j;
-                if (sum == N) {
-                    answer++;
-                    break;
-                } else if (sum > N) {
-                    break;
-                }
+
+        int start = 1;
+        int end = 1;
+        int sum = 1;
+        while (start <= end) {
+            if (sum == N) {
+                answer++;
+            }
+            if (sum < N) {
+                end++;
+                sum += end;
+            } else {
+                sum -= start;
+                start++;
             }
         }
 
